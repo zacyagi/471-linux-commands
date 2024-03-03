@@ -21,3 +21,29 @@
 | iptables | A user-space utility program that allows a system administrator to configure the IP packet filter rules of the Linux kernel firewall. |![image](https://github.com/zacyagi/471-linux-commands/assets/70293537/003c3177-b18b-4a92-b0be-c614e2706ef6)|
 | nftables | A subsystem of the Linux kernel providing filtering and classification of network packets. | ![image](https://github.com/zacyagi/471-linux-commands/assets/70293537/46f9771c-bdaa-4cc5-a921-580f3a639d09)|
 | openssl | A toolkit for the Transport Layer Security (TLS) and Secure Sockets Layer (SSL) protocols. | ![image](https://github.com/zacyagi/471-linux-commands/assets/70293537/939fd7c4-dfab-482b-a17b-837280e5529d)|
+
+
+
+
+```python
+import argparse
+import subprocess
+# Send ping for 5 seconds.
+def ping_website(website):
+    try:
+        result = subprocess.run(['ping', '-c', '5', website], stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+        return result.stdout
+    except Exception as e:
+        return f"Hata: {e}"
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="Send")
+
+    parser.add_argument("website", help="Web Url")
+
+    args = parser.parse_args()
+
+    ping_result = ping_website(args.website)
+    print(ping_result)
+```
+
